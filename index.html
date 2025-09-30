@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Atit Wajanasomboonlul · Data Engineer</title>
+    <meta
+      name="description"
+      content="Portfolio website for Atit Wajanasomboonlul — Senior Data Engineer with 15+ years of experience across ETL/ELT, data platforms, and analytics."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0b0d12;
+        --panel: #121621;
+        --muted: #8592ad;
+        --text: #e7ecf6;
+        --brand: #6dd3fb;
+        --brand-2: #8ef0c2;
+        --accent: #3a7bd5;
+        --border: #1e2432;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        --radius-lg: 18px;
+        --radius-md: 12px;
+        --radius-sm: 10px;
+        --maxw: 1100px;
+      }
+
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f8fafc;
+          --panel: #ffffff;
+          --muted: #5b667a;
+          --text: #0b1220;
+          --brand: #1967d2;
+          --brand-2: #07a07e;
+          --accent: #1b4bb3;
+          --border: #e5e9f2;
+          --shadow: 0 10px 20px rgba(16, 24, 40, 0.08);
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+          'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+        background: radial-gradient(
+            1200px 600px at 80% -50%,
+            rgba(109, 211, 251, 0.15),
+            transparent 60%
+          ),
+          radial-gradient(
+            800px 500px at -10% -30%,
+            rgba(142, 240, 194, 0.15),
+            transparent 60%
+          ),
+          var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: var(--maxw);
+        margin-inline: auto;
+        padding: 28px 24px;
+      }
+
+      /* Header */
+      header.site-header {
+        position: sticky;
+        top: 0;
+        backdrop-filter: saturate(180%) blur(10px);
+        background: color-mix(in oklab, var(--bg) 80%, transparent);
+        border-bottom: 1px solid var(--border);
+        z-index: 50;
+      }
+      header .inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 700;
+        letter-spacing: 0.2px;
+      }
+      .brand .logo {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--brand), var(--brand-2));
+        display: grid;
+        place-items: center;
+        color: #001014;
+        font-weight: 900;
+        box-shadow: var(--shadow);
+      }
+      nav a {
+        color: var(--muted);
+        text-decoration: none;
+        font-weight: 600;
+        margin-left: 18px;
+      }
+      nav a:hover,
+      nav a:focus {
+        color: var(--text);
+      }
+
+      /* Hero */
+      .hero {
+        padding: 64px 0 30px;
+      }
+      .hero .card {
+        background: linear-gradient(
+          180deg,
+          color-mix(in oklab, var(--panel) 94%, transparent),
+          var(--panel)
+        );
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: clamp(24px, 4vw, 48px);
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
+      }
+      .hero .eyebrow {
+        color: var(--brand-2);
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-size: 12px;
+      }
+      .hero h1 {
+        font-size: clamp(28px, 4.2vw, 44px);
+        line-height: 1.15;
+        margin: 10px 0 12px;
+      }
+      .hero p.lead {
+        font-size: clamp(16px, 2.2vw, 18px);
+        color: var(--muted);
+        max-width: 75ch;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 20px;
+      }
+      .btn {
+        appearance: none;
+        border: 1px solid var(--border);
+        background: var(--panel);
+        color: var(--text);
+        padding: 12px 18px;
+        border-radius: 12px;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        box-shadow: var(--shadow);
+      }
+      .btn.primary {
+        background: linear-gradient(135deg, var(--brand), var(--brand-2));
+        color: #001014;
+        border: 0;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .meta {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 26px;
+      }
+      .pill {
+        background: color-mix(in oklab, var(--panel) 90%, transparent);
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 10px 14px;
+        font-size: 14px;
+        color: var(--muted);
+        text-align: center;
+      }
+
+      /* Sections */
+      section {
+        padding: 28px 0;
+      }
+      .section-card {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: clamp(20px, 3vw, 30px);
+        box-shadow: var(--shadow);
+      }
+      .section-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 0 16px;
+      }
+      .section-title h2 {
+        font-size: clamp(20px, 2.4vw, 28px);
+        margin: 0;
+      }
+      .muted {
+        color: var(--muted);
+      }
+
+      /* Skills */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+      .skill {
+        background: linear-gradient(
+          180deg,
+          color-mix(in oklab, var(--panel) 96%, transparent),
+          var(--panel)
+        );
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        padding: 14px;
+      }
+      .skill h3 {
+        margin: 0 0 8px;
+        font-size: 16px;
+      }
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .tag {
+        border: 1px dashed var(--border);
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      /* Timeline */
+      .timeline {
+        position: relative;
+      }
+      .timeline::before {
+        content: '';
+        position: absolute;
+        left: 10px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(var(--brand), transparent 60%);
+        opacity: 0.5;
+      }
+      .role {
+        position: relative;
+        margin-left: 30px;
+        padding: 16px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        background: color-mix(in oklab, var(--panel) 96%, transparent);
+        box-shadow: var(--shadow);
+      }
+      .role + .role {
+        margin-top: 14px;
+      }
+      .role .dot {
+        position: absolute;
+        left: -22px;
+        top: 20px;
+        width: 12px;
+        height: 12px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--brand), var(--brand-2));
+        box-shadow: 0 0 0 3px color-mix(in oklab, var(--panel) 70%, transparent);
+      }
+      .role h3 {
+        margin: 0 0 4px;
+        font-size: 18px;
+      }
+      .role .when {
+        font-weight: 600;
+        color: var(--muted);
+        font-size: 14px;
+        margin-bottom: 6px;
+      }
+      .role .where {
+        font-weight: 700;
+      }
+      details {
+        border: 1px dashed var(--border);
+        border-radius: 12px;
+        padding: 10px 12px;
+        margin-top: 10px;
+        background: color-mix(in oklab, var(--panel) 95%, transparent);
+      }
+      details > summary {
+        cursor: pointer;
+        font-weight: 700;
+      }
+      details[open] {
+        background: color-mix(in oklab, var(--panel) 98%, transparent);
+      }
+      details ul {
+        margin: 10px 0 0 18px;
+      }
+      details li {
+        margin: 6px 0;
+      }
+
+      /* Footer */
+      footer {
+        padding: 40px 0 70px;
+        color: var(--muted);
+      }
+      .footer-inner {
+        display: grid;
+        gap: 12px;
+        text-align: center;
+      }
+
+      /* Utils */
+      .split {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 16px;
+        align-items: start;
+      }
+      @media (max-width: 900px) {
+        .split {
+          grid-template-columns: 1fr;
+        }
+        .meta {
+          grid-template-columns: 1fr;
+        }
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="sr-only" href="#content">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container inner">
+        <a class="brand" href="#top" aria-label="Go to top">
+          <span class="logo" aria-hidden="true">AW</span>
+          <span>Atit Wajanasomboonlul</span>
+        </a>
+        <nav aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content">
+      <section class="hero" id="about">
+        <div class="container">
+          <div class="card">
+            <div class="eyebrow">Senior Data Engineer · Sydney, AU</div>
+            <h1>
+              Building robust, scalable data platforms that turn raw data into
+              business impact.
+            </h1>
+            <p class="lead">
+              Accomplished Data Engineer with 15+ years of experience across
+              data transformation and integration — from gathering requirements
+              to production deployment. Expert in SQL and Python, cloud-native
+              pipelines, and modern ELT/ETL with a track record of automation,
+              quality, and reliability.
+            </p>
+            <div class="cta-row">
+              <a
+                class="btn primary"
+                href="https://atit-resume-wz5tfu6wlq-uc.a.run.app/"
+                target="_blank"
+                rel="noopener"
+                >View Résumé</a
+              >
+              <a class="btn" href="#contact">Get in touch</a>
+            </div>
+            <div class="meta" aria-label="Quick facts">
+              <div class="pill">15+ years experience</div>
+              <div class="pill">Cloud: AWS · GCP</div>
+              <div class="pill">ETL/ELT · Data Modelling · CI/CD</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="container">
+          <div class="section-card">
+            <div class="section-title">
+              <h2>Key Skill Matrix</h2>
+              <span class="muted">Tools & Platforms I use daily</span>
+            </div>
+            <div class="skills-grid">
+              <div class="skill">
+                <h3>Integration</h3>
+                <div class="tags">
+                  <span class="tag">SSIS</span>
+                  <span class="tag">Python</span>
+                  <span class="tag">R</span>
+                  <span class="tag">Informatica</span>
+                  <span class="tag">MDM</span>
+                  <span class="tag">IBM Information Server</span>
+                  <span class="tag">Domo</span>
+                  <span class="tag">Fivetran</span>
+                  <span class="tag">Spark</span>
+                  <span class="tag">dbt</span>
+                  <span class="tag">Docker</span>
+                  <span class="tag">Kubernetes</span>
+                  <span class="tag">Airflow</span>
+                  <span class="tag">Mage AI</span>
+                </div>
+              </div>
+              <div class="skill">
+                <h3>Visualisation</h3>
+                <div class="tags">
+                  <span class="tag">Power BI</span>
+                  <span class="tag">Tableau</span>
+                  <span class="tag">Domo</span>
+                  <span class="tag">Metabase</span>
+                  <span class="tag">Looker</span>
+                  <span class="tag">GoodData</span>
+                  <span class="tag">ThoughtSpot</span>
+                </div>
+              </div>
+              <div class="skill">
+                <h3>Database Platforms</h3>
+                <div class="tags">
+                  <span class="tag">BigQuery</span>
+                  <span class="tag">SQL Server</span>
+                  <span class="tag">Oracle</span>
+                  <span class="tag">DB2</span>
+                  <span class="tag">Databricks</span>
+                </div>
+              </div>
+              <div class="skill">
+                <h3>Data Modelling</h3>
+                <div class="tags">
+                  <span class="tag">Dimensional</span>
+                  <span class="tag">Data Vault</span>
+                </div>
+              </div>
+              <div class="skill">
+                <h3>AWS</h3>
+                <div class="tags">
+                  <span class="tag">S3</span>
+                  <span class="tag">Databricks</span>
+                  <span class="tag">Lambda</span>
+                  <span class="tag">EC2</span>
+                  <span class="tag">Elasticsearch</span>
+                </div>
+              </div>
+              <div class="skill">
+                <h3>GCP</h3>
+                <div class="tags">
+                  <span class="tag">BigQuery</span>
+                  <span class="tag">Cloud Functions</span>
+                  <span class="tag">GCS</span>
+                  <span class="tag">Pub/Sub</span>
+                  <span class="tag">Cloud Run</span>
+                  <span class="tag">Composer</span>
+                  <span class="tag">GKE</span>
+                  <span class="tag">Datastream</span>
+                </div>
+              </div>
+              <div class="skill">
+                <h3>CI/CD</h3>
+                <div class="tags">
+                  <span class="tag">Jenkins</span>
+                  <span class="tag">Terraform</span>
+                  <span class="tag">GitHub Actions</span>
+                </div>
+              </div>
+              <div class="skill">
+                <h3>AI</h3>
+                <div class="tags">
+                  <span class="tag">OpenAI</span>
+                  <span class="tag">Vertex AI</span>
+                  <span class="tag">Gemini</span>
+                  <span class="tag">MCP</span>
+                  <span class="tag">RAG</span>
+                  <span class="tag">ADK</span>
+                  <span class="tag">LangChain</span>
+                  <span class="tag">LangGraph</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <div class="container">
+          <div class="section-card">
+            <div class="section-title">
+              <h2>Experience</h2>
+              <span class="muted">Highlights & recent roles</span>
+            </div>
+            <div class="split">
+              <div class="timeline">
+                <!-- Rezdy -->
+                <article class="role">
+                  <div class="dot" aria-hidden="true"></div>
+                  <h3>
+                    <span class="where">Senior Data Engineer</span> · Rezdy
+                  </h3>
+                  <div class="when">Jan 2023 – Present</div>
+                  <p>
+                    Designed customer-facing analytics on BigQuery with dbt and
+                    Metabase/GoodData; built reliable ingestion from Stripe,
+                    Zendesk and more; enabled self-service via Streamlit on
+                    Cloud Run; added CI/CD automation with Terraform, Jenkins
+                    and GitHub Actions; prototyped an internal chatbot on Vertex
+                    AI.
+                  </p>
+                  <details>
+                    <summary>Key responsibilities</summary>
+                    <ul>
+                      <li>
+                        Customer reporting using dbt + Metabase on BigQuery.
+                      </li>
+                      <li>
+                        Third-party data ingestion (e.g., Stripe, Zendesk) to
+                        central warehouse.
+                      </li>
+                      <li>
+                        Reliable pipelines with SQL/Python/dbt; strong data
+                        quality.
+                      </li>
+                      <li>
+                        Self-service EL for internal teams via Streamlit on
+                        Cloud Run; GoodData for external dashboards.
+                      </li>
+                      <li>
+                        CI/CD testing & automation with Terraform, Jenkins,
+                        GitHub Actions.
+                      </li>
+                      <li>
+                        Vertex AI chatbot for interactive insight retrieval.
+                      </li>
+                    </ul>
+                  </details>
+                  <details>
+                    <summary>Key achievements</summary>
+                    <ul>
+                      <li>
+                        Improved customer satisfaction through accessible,
+                        faster insights.
+                      </li>
+                      <li>
+                        Reduced reliance on data engineering by enabling
+                        self-service data flows.
+                      </li>
+                    </ul>
+                  </details>
+                </article>
+
+                <!-- Grow -->
+                <article class="role">
+                  <div class="dot" aria-hidden="true"></div>
+                  <h3>
+                    <span class="where">Senior Data Engineer</span> · Grow
+                  </h3>
+                  <div class="when">Jul 2022 – Dec 2022</div>
+                  <p>
+                    Established a modern lakehouse with Fivetran, dbt, and
+                    Databricks; authored AWS Lambda OOP modules for complex
+                    blockchain API extraction; orchestrated with Databricks
+                    Workflows; automated infra with Terraform.
+                  </p>
+                  <details>
+                    <summary>Key responsibilities</summary>
+                    <ul>
+                      <li>Fivetran + Databricks + dbt modern data platform.</li>
+                      <li>
+                        Python OOP module in AWS Lambda for blockchain APIs.
+                      </li>
+                      <li>Medallion framework transformations in dbt.</li>
+                      <li>Best practices for dbt, Databricks, Medallion.</li>
+                      <li>Orchestration via Databricks Workflows.</li>
+                      <li>
+                        Terraform for Lambdas and custom Fivetran connectors.
+                      </li>
+                    </ul>
+                  </details>
+                  <details>
+                    <summary>Key achievements</summary>
+                    <ul>
+                      <li>
+                        End-to-end platform from scratch, scalable and
+                        high-quality.
+                      </li>
+                      <li>
+                        Advanced API extraction enabling seamless ingestion.
+                      </li>
+                    </ul>
+                  </details>
+                </article>
+
+                <!-- TfNSW -->
+                <article class="role">
+                  <div class="dot" aria-hidden="true"></div>
+                  <h3>
+                    <span class="where">Senior Data Engineer</span> · Transport
+                    for NSW
+                  </h3>
+                  <div class="when">May 2021 – Jun 2022</div>
+                  <p>
+                    Automated KPI reporting with Python & Domo; built API
+                    streaming and SharePoint ingestion; set up Magic
+                    ETL/MySQL/Redshift ELT; created dashboards;
+                    reverse-engineered legacy DataStage ETL to Domo; ingested
+                    data to Elasticsearch; earned Operational Excellence
+                    recognition.
+                  </p>
+                  <details>
+                    <summary>Key responsibilities</summary>
+                    <ul>
+                      <li>
+                        Automation to gather KPIs from Domo and generate weekly
+                        reports.
+                      </li>
+                      <li>
+                        API extraction/streaming to Domo, SharePoint ingestion,
+                        export to text & email.
+                      </li>
+                      <li>
+                        Magic ETL, MySQL ELT, Redshift ELT for KPI summaries.
+                      </li>
+                      <li>Domo dashboards for Sydney Trains management.</li>
+                      <li>
+                        Reverse-engineer legacy DataStage ETL; Python unit
+                        testing automation.
+                      </li>
+                      <li>Elasticsearch API ingestion in Python.</li>
+                    </ul>
+                  </details>
+                  <details>
+                    <summary>Key achievements</summary>
+                    <ul>
+                      <li>
+                        Significant gains in reporting speed, accuracy,
+                        productivity.
+                      </li>
+                      <li>Modernised legacy ETL with robust testing.</li>
+                    </ul>
+                  </details>
+                </article>
+
+                <!-- Darumatic -->
+                <article class="role">
+                  <div class="dot" aria-hidden="true"></div>
+                  <h3>
+                    <span class="where">Senior BI Developer</span> · Darumatic
+                    (Contract)
+                  </h3>
+                  <div class="when">Mar 2021 – May 2021</div>
+                  <p>
+                    Delivered parking survey and public CTP Green Slip
+                    dashboards on Domo; built Python ELT to BigQuery and Google
+                    Data Studio dashboards; created internal Domo API tooling.
+                  </p>
+                </article>
+
+                <!-- RBA -->
+                <article class="role">
+                  <div class="dot" aria-hidden="true"></div>
+                  <h3>
+                    <span class="where">Senior BI Developer</span> · Reserve
+                    Bank of Australia
+                  </h3>
+                  <div class="when">Jul 2018 – Dec 2020 (Fixed Term)</div>
+                  <p>
+                    Partnered with product owners; re-engineered Excel apps into
+                    standard ETL (DataStage, SSIS, Stored Procedures); built
+                    Power BI dashboards; contributed to modelling reviews; ran
+                    POCs in DAX; ML hackathon with RBA & FRBSF using SageMaker;
+                    delivered within Agile teams.
+                  </p>
+                </article>
+
+                <!-- HCF -->
+                <article class="role">
+                  <div class="dot" aria-hidden="true"></div>
+                  <h3><span class="where">BI Architect</span> · HCF</h3>
+                  <div class="when">Jan 2017 – Jun 2018</div>
+                  <p>
+                    Redesigned complex ETL, created reusable frameworks,
+                    migrated DataStage to SQL Server stored procedures, built
+                    Tableau quality/migration dashboards (introduced confusion
+                    matrix), and supported nightly operations.
+                  </p>
+                </article>
+
+                <!-- Covermore -->
+                <article class="role">
+                  <div class="dot" aria-hidden="true"></div>
+                  <h3>
+                    <span class="where">Senior ETL Developer</span> · Cover-More
+                  </h3>
+                  <div class="when">Jul 2015 – Jan 2017</div>
+                  <p>
+                    Developed SSIS loads, enhanced SAP BO/Tableau, created a
+                    Data Quality Matrix platform, implemented reconciliations,
+                    and contributed to an Informatica MDM single-customer-view
+                    initiative with IDQ cleansing.
+                  </p>
+                </article>
+
+                <!-- WIAU/IAG -->
+                <article class="role">
+                  <div class="dot" aria-hidden="true"></div>
+                  <h3>
+                    <span class="where">Senior BI/DW Developer</span> ·
+                    Wesfarmers Insurance / IAG
+                  </h3>
+                  <div class="when">Mar 2012 – Jun 2015</div>
+                  <p>
+                    Led integration to IAG Lumina Data Warehouse (Data Vault);
+                    unified ETL platforms; set naming and DW standards;
+                    delivered multiple marts in IBM InfoSphere DataStage; built
+                    metadata-driven BI framework; production support; supervised
+                    outsourced devs.
+                  </p>
+                </article>
+
+                <!-- RailCorp -->
+                <article class="role">
+                  <div class="dot" aria-hidden="true"></div>
+                  <h3>
+                    <span class="where">ETL Specialist</span> · RailCorp
+                    (Contract)
+                  </h3>
+                  <div class="when">Oct 2009 – Oct 2011</div>
+                  <p>
+                    Migrated Cognos Data Manager to DataStage v8; tuned
+                    historical loads from >1 month to a few days; created shared
+                    ETL templates; performance tuning for DataStage & Oracle.
+                  </p>
+                </article>
+
+                <!-- Early career -->
+                <article class="role">
+                  <div class="dot" aria-hidden="true"></div>
+                  <h3><span class="where">ETL Developer (Contractor)</span></h3>
+                  <div class="when">Jun 2005 – Sep 2009</div>
+                  <p>
+                    Business analysis; ETL frameworks, standards, and reusable
+                    templates for DataStage v8.1; performance tuning for jobs
+                    and SQL.
+                  </p>
+                </article>
+
+                <article class="role">
+                  <div class="dot" aria-hidden="true"></div>
+                  <h3><span class="where">Consultant</span> · IBM Thailand</h3>
+                  <div class="when">May 2003 – Apr 2005</div>
+                  <p>
+                    Designed ETL templates, error handling, and shared routines;
+                    parsed XML/flat files; client training; managed code
+                    migration across DTAP environments.
+                  </p>
+                </article>
+              </div>
+
+              <aside>
+                <div class="section-card">
+                  <h3 style="margin-top: 0">Profile Summary</h3>
+                  <p>
+                    Proven ability to design & implement ETL/ELT processes,
+                    optimise workflows, build end‑to‑end pipelines, and enhance
+                    data quality with automation. Proficient across AWS/GCP and
+                    agile delivery with exceptional analytical and
+                    problem‑solving strength.
+                  </p>
+                  <ul>
+                    <li>
+                      SQL & Python specialist; scalable, secure data pipelines
+                    </li>
+                    <li>Experienced with top ETL tools & orchestration</li>
+                    <li>Data modelling: Dimensional & Data Vault</li>
+                    <li>Hands-on with CI/CD and infrastructure-as-code</li>
+                  </ul>
+                  <div class="cta-row">
+                    <a
+                      class="btn"
+                      href="https://atit-resume-wz5tfu6wlq-uc.a.run.app/"
+                      target="_blank"
+                      rel="noopener"
+                      >Open Résumé</a
+                    >
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <div class="section-card">
+            <div class="section-title">
+              <h2>Contact</h2>
+              <span class="muted">References available upon request</span>
+            </div>
+            <p>
+              If you'd like to collaborate or discuss an opportunity, feel free
+              to reach out. I'm open to roles that leverage modern data stacks,
+              cloud platforms, and pragmatic AI.
+            </p>
+            <div class="cta-row">
+              <a class="btn primary" href="mailto:atit@purposebureau.com"
+                >Email Me</a
+              >
+              <a
+                class="btn"
+                href="https://www.linkedin.com/in/atitw"
+                target="_blank"
+                rel="noopener"
+                >LinkedIn</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <div>
+          © <span id="year"></span> Atit Wajanasomboonlul · Sydney, Australia
+        </div>
+        <div class="muted">
+          Built with semantic HTML & modern CSS. Fast, accessible, and
+          responsive.
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Simple JS to keep the year current (progressive enhancement)
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
